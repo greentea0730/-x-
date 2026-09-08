@@ -81,7 +81,7 @@ Discord 메시지
 
 ## 다운로드
 
-- [소스 코드 다운로드 (ZIP)](https://github.com/boseong0807/greentea0730/archive/refs/heads/main.zip)
+- [소스 코드 다운로드 (ZIP)](https://github.com/greentea0730/-x-/archive/refs/heads/main.zip)
 - GitHub 페이지의 **Code → Download ZIP**에서도 다운로드할 수 있습니다.
 
 ## 실행 전 설정
