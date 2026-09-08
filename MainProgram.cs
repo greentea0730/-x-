@@ -14,6 +14,10 @@ using LumiBot.Services;
 
 public class Program
 {   
+    // 사용자 설정: 아래 값만 본인의 Discord/YouTube 정보로 교체하세요.
+    private const string DiscordBotToken = "YOUR_DISCORD_BOT_TOKEN";
+    private const string YoutubeApiKey = "YOUR_YOUTUBE_API_KEY";
+    private const string YoutubePlaylistId = "YOUR_YOUTUBE_PLAYLIST_ID";
     private const ulong PrimaryChannelId = 0;
     private const ulong LegacyChannelId = 0;
 
@@ -67,9 +71,7 @@ public class Program
     _userRegistrationService = new UserRegistrationService(
         Path.Combine(AppContext.BaseDirectory, "user-registrations.json"));
     
-        var token = "YOUR_DISCORD_BOT_TOKEN";
-
-        await _client.LoginAsync(TokenType.Bot, token);
+        await _client.LoginAsync(TokenType.Bot, DiscordBotToken);
         await _client.StartAsync();
         await _erApiService.LoadCharacterDataAsync();
         
@@ -596,11 +598,10 @@ public class Program
 {
     var youtubeService = new YouTubeService(new BaseClientService.Initializer()
     {
-        ApiKey = "YOUR_YOUTUBE_API_KEY",
+        ApiKey = YoutubeApiKey,
         ApplicationName = "LumiBot"
     });
 
-    string myPlaylistId = "YOUR_YOUTUBE_PLAYLIST_ID";
     string nextPageToken = "";
     string lowerQuery = query.ToLower();
 
@@ -608,7 +609,7 @@ public class Program
     while (nextPageToken != null)
     {
         var playlistRequest = youtubeService.PlaylistItems.List("snippet");
-        playlistRequest.PlaylistId = myPlaylistId;
+        playlistRequest.PlaylistId = YoutubePlaylistId;
         playlistRequest.MaxResults = 80;
         playlistRequest.PageToken = nextPageToken; // 다음 페이지 정보를 넣음
 

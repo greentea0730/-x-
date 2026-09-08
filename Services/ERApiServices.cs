@@ -19,6 +19,7 @@ namespace LumiBot.Services
 
     public class ERApiService
     {
+        // 사용자 설정: Eternal Return Open API 키를 입력하세요.
         private readonly HttpClient _http;
         private const string BaseUrl = "https://open-api.bser.io";
         private const string ApiKey = "YOUR_ER_API_KEY";

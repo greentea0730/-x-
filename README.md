@@ -2,6 +2,37 @@
 
 Eternal Return 전적 검색, Discord 알림, 익명 게시판, YouTube 공략 검색을 제공하는 Discord 봇입니다.
 
+## 처음 사용하는 사람을 위한 설정
+
+실행 전에 아래 설정값을 소스 코드 상단의 `사용자 설정` 영역에 입력하세요.
+
+| 설정값 | 파일 | 입력할 값 |
+| --- | --- | --- |
+| `DiscordBotToken` | `MainProgram.cs` | Discord 봇 토큰 |
+| `PrimaryChannelId`, `LegacyChannelId` | `MainProgram.cs` | 접속 알림·자동 공지 채널 ID |
+| `YoutubeApiKey` | `MainProgram.cs` | YouTube Data API 키 |
+| `YoutubePlaylistId` | `MainProgram.cs` | YouTube 재생목록 ID |
+| `GuildId` | `Services/AnonymousService.cs` | 익명 게시판을 사용할 Discord 서버 ID |
+| `PostChannelId` | `Services/AnonymousService.cs` | 익명 글을 게시할 채널 ID |
+| `LogChannelId` | `Services/AnonymousService.cs` | 익명 글 로그를 남길 채널 ID |
+| `ApiKey` | `Services/ERApiServices.cs` | Eternal Return Open API 키 |
+
+### Discord 봇 토큰과 채널 ID
+
+1. [Discord Developer Portal](https://discord.com/developers/applications)에서 애플리케이션을 만들고 **Bot → Reset Token**으로 토큰을 발급합니다.
+2. **Bot → Privileged Gateway Intents**에서 `Message Content Intent`, `Server Members Intent`, `Presence Intent`를 켭니다.
+3. Discord 사용자 설정의 **고급 → 개발자 모드**를 켭니다.
+4. 서버를 우클릭해 **서버 ID 복사**, 채널을 우클릭해 **채널 ID 복사**를 누릅니다.
+5. 복사한 값을 `GuildId`, `PrimaryChannelId`, `LegacyChannelId`, `PostChannelId`, `LogChannelId`에 입력합니다.
+
+### API 키와 YouTube 재생목록 ID
+
+- Eternal Return Open API 키는 해당 API 제공처에서 발급받아 `Services/ERApiServices.cs`의 `ApiKey`에 입력합니다.
+- YouTube API 키는 [Google Cloud Console](https://console.cloud.google.com/)에서 YouTube Data API v3를 활성화한 뒤 발급받아 `MainProgram.cs`의 `YoutubeApiKey`에 입력합니다.
+- YouTube 재생목록 주소가 `https://www.youtube.com/playlist?list=ABC123`이라면 `YoutubePlaylistId`에는 `ABC123`만 입력합니다.
+
+토큰과 API 키는 절대 GitHub에 올리거나 다른 사람에게 공유하지 마세요. 이미 공개했다면 해당 서비스에서 즉시 폐기하고 새 키를 발급하세요.
+
 ## 주요 기능
 
 ### 전적 검색
@@ -88,13 +119,9 @@ Discord 메시지
 
 공개 저장소에 비밀정보가 올라가지 않도록 다음 값은 플레이스홀더로 비워 두었습니다.
 
-- `MainProgram.cs`
-  - `YOUR_DISCORD_BOT_TOKEN`
-  - `YOUR_YOUTUBE_API_KEY`
-  - `YOUR_YOUTUBE_PLAYLIST_ID`
-  - Discord 서버 및 채널 ID
+- `MainProgram.cs`의 `사용자 설정` 영역
 - `Services/ERApiServices.cs`
-  - `YOUR_ER_API_KEY`
+  - `ApiKey`
 
 
 ## 요구 사항
